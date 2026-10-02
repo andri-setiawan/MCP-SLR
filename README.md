@@ -66,6 +66,19 @@ hermes chat --in "$PWD" -Q -q \
 
 `--in` memastikan Hermes masuk direktori proyek. Integrasi MCP native dengan Codex/Hermes memerlukan konfigurasi klien tersendiri; demo ini tidak mengklaim keduanya sudah didaftarkan secara native. Screenshot eksekusi dan potongan kode nyata, tanpa secret, terdapat di `screenshots/`.
 
+## Claude Code: panggil tools MCP **secara native**
+
+Berbeda dari demo Codex/Hermes di atas, Claude Code dapat memakai ketiga tools MCP **langsung**, tanpa memerintahkan Python client. Siapkan `private/credentials.json` sesuai contoh; lalu:
+
+```bash
+python make_claude_config.py  # menghasilkan private/claude-mcp.json (0600)
+claude -p --mcp-config private/claude-mcp.json --strict-mcp-config \
+  --allowedTools 'mcp__slr-elsevier__search_scopus' --max-turns 3 \
+  'Call slr-elsevier search_scopus directly for TITLE-ABS-KEY("AI coding agent") AND PUBYEAR > 2022 AND PUBYEAR < 2027; count=2, start=0. Report status, total, titles and DOIs. Do not read files or reveal credentials.'
+```
+
+Contoh tambahan: `--allowedTools 'mcp__slr-semantic__recommendations' 'mcp__slr-openalex__work_by_doi'` dengan prompt DOI seed dan DOI verifikasi. Hasil eksekusi sungguhan ada di `screenshots/09-claude-scopus.png` dan `screenshots/10-claude-s2-openalex.png`; HTTP 200 yang tertangkap adalah status saat pengambilan, bukan jaminan layanan selalu aktif. `--mcp-config` mengisolasi demo dari daftar server pribadi yang besar; file konfigurasi berisi Bearer token dan **tidak boleh dipublikasikan**. Jangan menulis token dalam perintah `claude mcp add -H ...`, karena dapat masuk history shell.
+
 ## PSALSAR dan batas metodologis
 
 **Protocol**: tetapkan pertanyaan, kriteria, tahun, string pencarian. **Search**: simpan string lengkap, basis data, tanggal, status, pagination/total. **Appraisal**: deduplikasi DOI, screening judul–abstrak dan full text dengan alasan eksklusi. **Synthesis/Analysis**: ekstrak dan analisis hanya studi eligible. **Report**: tabel provenance dan diagram PRISMA. API dan rekomendasi menghasilkan **kandidat**, bukan keputusan ilmiah. Jangan menyamakan jumlah hasil indeks dengan jumlah studi yang masuk SLR.
