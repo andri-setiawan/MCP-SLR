@@ -12,6 +12,25 @@ Kode pendamping [slide PSALSAR–agentic SLR](https://docs.google.com/presentati
 | Elsevier/Scopus | `search_scopus` | Kueri Boolean `TITLE-ABS-KEY`, pagination dan metadata |
 | OpenAlex | `search_works`, `work_by_doi` | Metadata DOI, lokasi OA, sitasi |
 
+## Screenshot demo (tautan PNG langsung)
+
+Jika halaman pratinjau GitHub gagal dibuka, gunakan tautan gambar langsung berikut:
+
+| Demo | PNG |
+|---|---|
+| Daftar enam tools MCP | [01-tools](https://raw.githubusercontent.com/andri-setiawan/MCP-SLR/main/screenshots/01-tools.png) |
+| Scopus search | [02-scopus](https://raw.githubusercontent.com/andri-setiawan/MCP-SLR/main/screenshots/02-scopus.png) |
+| Semantic Scholar recommendation | [03-semantic](https://raw.githubusercontent.com/andri-setiawan/MCP-SLR/main/screenshots/03-semantic.png) |
+| OpenAlex + Crossref | [04-openalex](https://raw.githubusercontent.com/andri-setiawan/MCP-SLR/main/screenshots/04-openalex.png) |
+| Codex CLI | [05-codex](https://raw.githubusercontent.com/andri-setiawan/MCP-SLR/main/screenshots/05-codex.png) |
+| Hermes CLI | [06-hermes](https://raw.githubusercontent.com/andri-setiawan/MCP-SLR/main/screenshots/06-hermes.png) |
+| Python MCP client | [07-python-client](https://raw.githubusercontent.com/andri-setiawan/MCP-SLR/main/screenshots/07-python-client.png) |
+| Python MCP server | [08-python-server](https://raw.githubusercontent.com/andri-setiawan/MCP-SLR/main/screenshots/08-python-server.png) |
+| Claude Code memanggil Scopus MCP langsung | [09-claude-scopus](https://raw.githubusercontent.com/andri-setiawan/MCP-SLR/main/screenshots/09-claude-scopus.png) |
+| Claude Code memanggil S2 + OpenAlex MCP langsung | [10-claude-s2-openalex](https://raw.githubusercontent.com/andri-setiawan/MCP-SLR/main/screenshots/10-claude-s2-openalex.png) |
+
+Unduh sekaligus: `screenshots.zip` di akar repo; hanya berisi sepuluh PNG, tanpa kredensial.
+
 ## Persiapan
 
 Python 3.11+; dependensi `mcp==2.2.0`, `httpx2==2.13.1`, `uvicorn==0.54.0` (lihat `requirements.txt`).
